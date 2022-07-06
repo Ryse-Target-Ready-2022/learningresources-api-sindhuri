@@ -24,10 +24,9 @@ public class LearningResourceService {
             }
 
 
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            System.out.println(e);
+
         }
         return li;
     }
@@ -37,5 +36,64 @@ public class LearningResourceService {
         List<LearningResource> learningResources=getLearningResourcesFromFile(filename);
         return learningResources;
     }
+    private void loadLearningResourcesIntoFile(List<LearningResource> li)
+    {
+        try
+        {
+            String csvD=",";
+            File filename=new File("LearningResources.csv");
+            BufferedWriter bw=new BufferedWriter(new FileWriter(filename,true));
+            for(LearningResource li1:li)
+            {
+                bw.newLine();
+                StringBuffer line=new StringBuffer();
+                line.append(li1.getResourceId());
+                line.append(",");
+                line.append(li1.getResourceName());
+                line.append(",");
+                line.append(li1.getCostPrice());
+                line.append(",");
+                line.append(li1.getSellingPrice());
+                line.append(",");
+                line.append(li1.getResourceStatus());
+                line.append(",");
+                line.append(li1.getCreatedDate());
+                line.append(",");
+                line.append(li1.getPublishedDate());
+                line.append(",");
+                line.append(li1.getRetiredDate());
+                line.append(",");
+                bw.write(line.toString());
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    public void loadLearningResources(List<LearningResource> li)
+    {
 
+        loadLearningResourcesIntoFile(li);
+    }
+    public List<Double> getProfitMargin(LearningResource li)
+    {
+
+            List<LearningResource> learningResources=getLearningResources();
+            List<Double> profitMargins;
+        profitMargins = new ArrayList<>();
+        for(LearningResource lr:learningResources)
+            {
+                double r=(lr.getSellingPrice() - lr.getCostPrice())/lr.getSellingPrice();
+                profitMargins.add(r);
+            }
+
+
+        return profitMargins;
+
+    }
+    public List<LearningResource> sortLearningResources(List<LearningResource> learningResources)
+    {
+        List<LearningResource> lr=getLearningResources();
+        lr.sort(new LearningResourceSorter());
+        return lr;
+    }
 }
