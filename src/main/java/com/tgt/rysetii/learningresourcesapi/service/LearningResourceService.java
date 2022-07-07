@@ -93,7 +93,7 @@ public class LearningResourceService {
     public List<LearningResource> sortLearningResources(List<LearningResource> learningResources)
     {
         List<LearningResource> lr=getLearningResources();
-        lr.sort(new LearningResourceSorter());
+        Collections.sort(lr,new LearningResourceSorter());
         return lr;
     }
 }
