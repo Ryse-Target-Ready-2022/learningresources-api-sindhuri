@@ -65,6 +65,8 @@ public class LearningResourceService {
                 line.append(",");
                 bw.write(line.toString());
             }
+            bw.flush();
+            bw.close();
         } catch (Exception e) {
             System.out.println(e);
         }
