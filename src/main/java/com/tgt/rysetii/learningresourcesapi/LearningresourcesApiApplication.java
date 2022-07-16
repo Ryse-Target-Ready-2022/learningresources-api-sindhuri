@@ -5,6 +5,8 @@ import com.tgt.rysetii.learningresourcesapi.service.LearningResourceService;
 import org.springframework.boot.SpringApplication;
 import com.tgt.rysetii.learningresourcesapi.Repositories.LearningResourceRepository;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.Collection;
