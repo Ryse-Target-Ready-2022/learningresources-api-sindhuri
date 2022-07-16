@@ -1,11 +1,21 @@
 package com.tgt.rysetii.learningresourcesapi.entity;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
 import java.time.LocalDate;
+
+@Entity
 public class LearningResource {
 
+@Id
     private int resourceId;
     private String resourceName;
     private double costPrice;
     private double sellingPrice;
+    @Enumerated(EnumType.STRING)
     private LearningResourceStatus resourceStatus;
     private LocalDate createdDate;
     private LocalDate publishedDate;
