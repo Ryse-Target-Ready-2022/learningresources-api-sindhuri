@@ -92,7 +92,7 @@ public class LearningResourceService {
         return profitMargins;
 
     }
-    public List<LearningResource> sortLearningResources(List<LearningResource> learningResources)
+    public List<LearningResource> sortLearningResources()
     {
         List<LearningResource> lr=getLearningResources();
         Collections.sort(lr,new LearningResourceSorter());
