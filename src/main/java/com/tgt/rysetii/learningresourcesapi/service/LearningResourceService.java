@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.*;
 @Component("LRR")
+@Service
 public class LearningResourceService {
     @Autowired
 
