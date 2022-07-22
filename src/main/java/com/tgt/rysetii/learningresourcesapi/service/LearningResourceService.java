@@ -26,13 +26,10 @@ public class LearningResourceService {
     public List<Double> getProfitMargin(LearningResource li)
     {
 
-            List<LearningResource> learningResources=getLearningResources();
-            List<Double> profitMargins;
-        profitMargins = new ArrayList<>();
-        for(LearningResource lr:learningResources)
-            {
-                double r=(lr.getSellingPrice() - lr.getCostPrice())/lr.getSellingPrice();
-                profitMargins.add(r);
+           List<LearningResource> learningResources=getLearningResources();
+        List<Double> profitMargins=learningResources.stream()
+                .map(lr->((lr.getSellingPrice()-lr.getCostPrice())/lr.getSellingPrice())).collect(toList());
+        return profitMargins;
             }
 
 
@@ -41,8 +38,12 @@ public class LearningResourceService {
     }
     public List<LearningResource> sortLearningResources()
     {
-        List<LearningResource> lr=getLearningResources();
-        Collections.sort(lr,new LearningResourceSorter());
-        return lr;
+        List<LearningResource> learningResources=getLearningResources();
+        learningResources.sort((lr1,lr2)->{
+            Double profitMargin1=(lr1.getSellingPrice()-lr1.getCostPrice())/lr1.getSellingPrice();
+            Double profitMargin2=(lr1.getSellingPrice()-lr1.getCostPrice())/lr1.getSellingPrice();
+            return profitMargin2.compareTo(profitMargin1);
+        });
+        return learningResources;
     }
 }
