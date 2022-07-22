@@ -31,7 +31,8 @@ public class LearningResourceService {
     public List<Double> getProfitMargin()
     {
         List<LearningResource> learningResources=getLearningResources();
-        List<Double> profitMargins=new ArrayList<>();
+        List<Double> profitMargins;
+        profitMargins=new ArrayList<>();
         for(LearningResource lr1:learningResources)
         {Double profit=(lr1.getSellingPrice()-lr1.getCostPrice())/lr1.getSellingPrice();
             profitMargins.add(profit);}
