@@ -25,16 +25,16 @@ public class LearningResourceController {
         return lrs.getLearningResources();
     }
     @PostMapping("/Resources")
-    public String putResources(@RequestBody List<LearningResource> lr)
+    public void putResources(@RequestBody List<LearningResource> lr)
     {
 
             lrs.saveLearningResources(lr);
-            return "Added the Resources Successfully";
+
     }
     @DeleteMapping("/Resources/{id}")
-    public String deleteResource(@PathVariable int id)
+    public void deleteResource(@PathVariable int id)
     {
-        return lrs.deleteLearningResource(id);
+        lrs.deleteLearningResource(id);
     }
 
 
