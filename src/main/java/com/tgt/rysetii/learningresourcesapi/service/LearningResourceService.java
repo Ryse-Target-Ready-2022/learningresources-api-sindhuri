@@ -2,7 +2,6 @@
     package com.tgt.rysetii.learningresourcesapi.service;
 import com.tgt.rysetii.learningresourcesapi.Repositories.LearningResourceRepository;
 import com.tgt.rysetii.learningresourcesapi.entity.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +10,12 @@ import java.util.*;
     @Service
     public class LearningResourceService {
 
-        @Autowired
-        LearningResourceRepository a;
 
+       private LearningResourceRepository a;
 
+        public LearningResourceService(LearningResourceRepository a) {
+            this.a = a;
+        }
 
 
         public void saveLearningResources(List<LearningResource> a1) {
