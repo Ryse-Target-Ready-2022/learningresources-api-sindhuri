@@ -12,8 +12,7 @@ import java.util.Optional;
 public class LearningResourceController {
 
     private final LearningResourceService lrs;
-    @Autowired
-    LearningResourceRepository a;
+
 
     public LearningResourceController(LearningResourceService lrs) {
         this.lrs = lrs;
